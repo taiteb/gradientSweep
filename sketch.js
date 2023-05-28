@@ -5,7 +5,7 @@ let currentColor;
 let colors = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
 
   // Filling color list
   for (let i = 0; i < colors.length; i++){
