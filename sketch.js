@@ -24,7 +24,7 @@ function setup() {
 
   // Filling array with objects (linesLength must be defined here rather than before setup because windowWidth is a p5 library function)
   linesLength = windowWidth;
-  for (let i = 0; i < linesLength; i += 8){
+  for (let i = 0; i < linesLength; i += 14){
     lineSet.push(new straightLine(i, windowHeight, i, 0, 13, i));
   }
 }
@@ -79,7 +79,7 @@ class straightLine{
   }
 
   colorUpdate(){
-    this.objectCurrent = lerpColor(this.objectCurrent, this.objectTarget, 0.01);
+    this.objectCurrent = lerpColor(this.objectCurrent, this.objectTarget, 0.009);
     if (frameCount % 25 === 0) {
       this.cI = (this.cI + 1) % colors.length;
       this.objectTarget = color(colors[this.cI][0],
