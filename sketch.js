@@ -9,7 +9,7 @@ let lineSet = [];
 let linesLength;
 
 function setup() {
-  createCanvas(windowWidth - 10, 200);
+  createCanvas(windowWidth, 200);
 
   // Filling color list
   for (let i = 0; i < colors.length; i++) {
@@ -24,7 +24,7 @@ function setup() {
 
   // Filling array with objects (linesLength must be defined here rather than before setup because windowWidth is a p5 library function)
   linesLength = windowWidth;
-  for (let i = 17; i < linesLength; i += 14) {
+  for (let i = 7; i < linesLength; i += 14) {
     lineSet.push(new straightLine(i, windowHeight, i, -3, 13, i));
   }
 }
@@ -90,9 +90,9 @@ class straightLine {
 
 function windowResized() {
   lineSet = [];
-  resizeCanvas(windowWidth - 5, 200);
+  resizeCanvas(windowWidth, 200);
   linesLength = windowWidth;
-  for (let i = 10; i < linesLength; i += 14) {
+  for (let i = 0; i < linesLength; i += 14) {
     lineSet.push(new straightLine(i, windowHeight, i, -3, 13, i));
   }
 }
