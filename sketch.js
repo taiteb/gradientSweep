@@ -9,10 +9,10 @@ let lineSet = [];
 let linesLength;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth - 10, 200);
 
   // Filling color list
-  for (let i = 0; i < colors.length; i++){
+  for (let i = 0; i < colors.length; i++) {
     colors[i][0] = random(90);
     colors[i][1] = random(90, 255);
     colors[i][2] = random(100, 255);
@@ -24,17 +24,17 @@ function setup() {
 
   // Filling array with objects (linesLength must be defined here rather than before setup because windowWidth is a p5 library function)
   linesLength = windowWidth;
-  for (let i = 0; i < linesLength; i += 14){
-    lineSet.push(new straightLine(i, windowHeight, i, 0, 13, i));
+  for (let i = 17; i < linesLength; i += 14) {
+    lineSet.push(new straightLine(i, windowHeight, i, -3, 13, i));
   }
 }
 
 function draw() {
   currentColor = lerpColor(currentColor, targetColor, 0.01);
   // background(currentColor);
-  
+
   // Drawing lines to canvas
-  for (let i = 0; i < lineSet.length; i++){
+  for (let i = 0; i < lineSet.length; i++) {
     let l = lineSet[i];
     l.show();
     l.colorUpdate();
@@ -44,11 +44,11 @@ function draw() {
   if (frameCount % 25 === 0) {
     colorIndex = (colorIndex + 1) % colors.length;
     targetColor = color(colors[colorIndex][0],
-        colors[colorIndex][1], colors[colorIndex][2]);
-}
+      colors[colorIndex][1], colors[colorIndex][2]);
+  }
   // Resetting color values every 150 frames 
   if (frameCount % 150 === 0) {
-    for (let i = 0; i < colors.length; i++){
+    for (let i = 0; i < colors.length; i++) {
       colors[i][0] = random(90);
       colors[i][1] = random(90, 255);
       colors[i][2] = random(100, 255);
@@ -57,8 +57,8 @@ function draw() {
 }
 
 // Creating line class
-class straightLine{
-  constructor(x1, y1, x2, y2, w, cI){
+class straightLine {
+  constructor(x1, y1, x2, y2, w, cI) {
     this.x1 = x1;
     this.y1 = y1;
     this.x2 = x2;
@@ -70,20 +70,29 @@ class straightLine{
   objectTarget = currentColor;
   objectCurrent = targetColor;
 
-  show(){
+  show() {
     // this.cI = currentColor;
     stroke(this.objectCurrent);
     strokeWeight(this.w);
-    fill(this.objectCurrent);
-    line(this.x1, this.y1, this.x2, this.y2+5);
+    // fill(this.objectCurrent);
+    line(this.x1, this.y1, this.x2, this.y2 + 5);
   }
 
-  colorUpdate(){
+  colorUpdate() {
     this.objectCurrent = lerpColor(this.objectCurrent, this.objectTarget, 0.009);
     if (frameCount % 25 === 0) {
       this.cI = (this.cI + 1) % colors.length;
       this.objectTarget = color(colors[this.cI][0],
-          colors[this.cI][1], colors[this.cI][2]);
+        colors[this.cI][1], colors[this.cI][2]);
+    }
   }
+}
+
+function windowResized() {
+  lineSet = [];
+  resizeCanvas(windowWidth - 5, 200);
+  linesLength = windowWidth;
+  for (let i = 10; i < linesLength; i += 14) {
+    lineSet.push(new straightLine(i, windowHeight, i, -3, 13, i));
   }
 }
