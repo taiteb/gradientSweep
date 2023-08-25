@@ -92,7 +92,7 @@ function windowResized() {
   lineSet = [];
   resizeCanvas(windowWidth, 200);
   linesLength = windowWidth;
-  for (let i = 0; i < linesLength; i += 14) {
+  for (let i = 7; i < linesLength; i += 14) {
     lineSet.push(new straightLine(i, windowHeight, i, -3, 13, i));
   }
 }
