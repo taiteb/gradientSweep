@@ -10,6 +10,7 @@ let linesLength;
 
 function setup() {
   createCanvas(windowWidth, 200);
+  frameRate(20);
 
   // Filling color list
   for (let i = 0; i < colors.length; i++) {
