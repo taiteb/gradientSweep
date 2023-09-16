@@ -91,7 +91,7 @@ class straightLine {
 
 function windowResized() {
   lineSet = [];
-  resizeCanvas(windowWidth, 200);
+  resizeCanvas(windowWidth, windowHeight);
   linesLength = windowWidth;
   setTimeout(function() {
     for (let i = 7; i < linesLength; i += 14) {
