@@ -9,7 +9,7 @@ let lineSet = [];
 let linesLength;
 
 function setup() {
-  createCanvas(windowWidth, 200);
+  createCanvas(windowWidth, windowHeight);
   frameRate(20);
 
   // Filling color list
